@@ -2,9 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>LOVE</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <div class="main" id="main">
+        <div class="img" id="img">
+            <h1>嫁给我吧</h1>
+        </div>
+        <div class="btn">
+            <input type="button" value="好" id="yes" />
+            <input type="button" value="不好" id="no"/>
+        </div>
+    </div>
+    <script>
+        var main = document.getElementById('main');
+        var yes = document.getElementById('yes');
+        var no = document.getElementById('no');
+        var oImg=document.getElementById('img');
+        var i=0;
+        var contentArr=[
+            '每月工资、奖金极其所有收入全部上缴',
+            '每天10点前必回家',
+            '还不同意？',
+            '真的不同意？',
+            '好吧！',
+            '',
+            ''
+        ]
+        no.onclick=function(){
+            if(i>=contentArr.length)return;
+            if(i==5){
+                (function(){
+                    alert("只能出绝招了！");
+                    var img=new Image();
+                    img.src="./img/timg.gif";
+                    oImg.innerHTML="";
+                    oImg.appendChild(img);
+                    no.attributes.disable=false;
+                    yes.attributes.disable=false;
+                    setTimeout(function(){
+                        oImg.innerHTML="<h1>嫁给我吧</h1>";
+                        no.value="好";
+                        no.attributes.disable=true;
+                        yes.attributes.disable=true;
 
+                    },3000)})()
+            }
+            else if(i==6){
+                alert('哈哈哈哈哈哈哈');
+                setTimeout(function(){
+                    var img=new Image();
+                    img.src='./img/complete.gif';
+                    main.innerHTML='';
+                    main.appendChild(img);
+                },3000);
+            }
+            else{
+                alert(contentArr[i]);
+            }
+            i++;
+        }
+        yes.onclick=function(){
+            var img=new Image();
+            img.src='./img/complete.gif';
+            main.innerHTML='';
+            main.appendChild(img);
+        }
+    </script>
 </body>
 </html>
